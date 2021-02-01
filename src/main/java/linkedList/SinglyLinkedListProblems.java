@@ -31,4 +31,31 @@ public class SinglyLinkedListProblems {
         }
     }
 
+    public Node nthNodeEndOneScan(int n){
+        Node temp = head;
+        Node nthTemp = null;
+
+        for(int i = 0; i< n; i++){
+            if (temp != null){
+                temp = temp.next;
+            }
+        }
+
+        while (temp != null){
+            if(nthTemp == null){
+                nthTemp = head;
+            } else {
+                nthTemp = nthTemp.next;
+            }
+            temp = temp.next;
+        }
+
+        if(nthTemp != null){
+            return nthTemp;
+        } else {
+            return null;
+        }
+                
+    }
+
 }
