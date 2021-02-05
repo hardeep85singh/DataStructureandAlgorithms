@@ -55,7 +55,6 @@ public class SinglyLinkedListProblems {
         } else {
             return null;
         }
-                
     }
 
 }
