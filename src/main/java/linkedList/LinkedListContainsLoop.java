@@ -66,7 +66,7 @@ public class LinkedListContainsLoop {
             do{
                 slowNode = slowNode.next;
                 length++;
-            } while (slowNode != fastNode)
+            } while (slowNode != fastNode);
         }
         return length;
     }

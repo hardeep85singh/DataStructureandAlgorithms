@@ -57,4 +57,49 @@ public class SinglyLinkedListProblems {
         }
     }
 
+    public Node reverseListIterative(Node head){
+        Node current = head;
+        Node previous = null;
+
+        while(current != null){
+            Node next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
+
+    public void reverseListRecursive(Node current, Node[] head){
+        if (current == null){
+            return;
+        }
+        Node nextNode = current.next;
+        if (nextNode == null){
+            head[0] = current;
+            return;
+        }
+        reverseListRecursive(nextNode, head);
+        nextNode.next = current;
+        current.next = null;
+    }
+
+    public Node findMiddle(Node head){
+        Node node1x = head;
+        Node node2x = head;
+        int i = 0;
+
+        while (node1x.next != null){
+            if(i == 0){
+                node1x = node1x.next;
+                i = 1;
+            } else if (i == 1){
+                node1x = node1x.next;
+                node2x = node2x.next;
+                i = 0;
+            }
+        }
+        return node2x;
+    }
+
 }
