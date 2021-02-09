@@ -1,10 +1,10 @@
 package stack;
 
 public interface Stack {
-    void push(int data);
-    int pop();
-    int top();
+    void push (int data);
+    int pop ();
+    int peek();
     int size();
-    boolean isEmpty();
-    boolean isFull();
+    boolean empty();
+    int search(int index);
 }

@@ -1,4 +1,4 @@
-package stackImplementation;
+package stack;
 
 public class StackDriver {
     public static void main(String[]args) {

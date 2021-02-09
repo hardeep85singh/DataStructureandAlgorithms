@@ -1,47 +1,46 @@
 package stack;
 
 public class StackArrayImpl implements Stack {
-
-    private int[] arr;
-    private int size;
+    private int[] nums;
+    private int length;
     private int current;
 
     public StackArrayImpl() {
-        arr = new int[10];
-        size = 10;
+        nums = new int[10];
+        length = 10;
         current = 0;
     }
 
     @Override
     public void push(int data) {
-        if (current > arr.length) {
-            int[] newArr = new int[arr.length * 2];
-            size = size * 2;
-            for (int i = 0; i < arr.length; i++) {
-                newArr[i] = arr[i];
+        if (current == length) {
+            int[] temp = new int[2 * length];
+            for (int i = 0; i < length; i++) {
+                temp[i] = nums[i];
             }
-            arr = newArr;
-        } else {
-            arr[current] = data;
-            current++;
+            length = length * 2;
+            nums = temp;
         }
+        nums[current] = data;
+        current++;
     }
 
     @Override
     public int pop() {
-        if (current == 0){
-            throw new IllegalArgumentException("No element to pop");
+        if (current == 0) {
+            throw new ArrayIndexOutOfBoundsException(
+                    "There are no elements to delete."
+            );
         }
+        int top = nums[current - 1];
+        nums[current - 1] = 0;
         current--;
-        return arr[current+1];
+        return top;
     }
 
     @Override
-    public int top() {
-        if (current == 0){
-            throw new IllegalArgumentException("No element to pop");
-        }
-        return arr[current];
+    public int peek() {
+        return nums[current - 1];
     }
 
     @Override
@@ -50,18 +49,19 @@ public class StackArrayImpl implements Stack {
     }
 
     @Override
-    public boolean isEmpty() {
-        if (current == 0){
+    public boolean empty() {
+        if (current == 0) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
-    public boolean isFull() {
-        if (current == size){
-            return true;
+    public int search(int index) {
+        if (index > current) {
+            throw new IndexOutOfBoundsException("The index you are searching is not present.");
         }
-        return false;
+        return nums[index];
     }
 }

@@ -1,4 +1,4 @@
-package stackImplementation;
+package stack;
 
 public class StackListImpl implements Stack {
     private Node head;
