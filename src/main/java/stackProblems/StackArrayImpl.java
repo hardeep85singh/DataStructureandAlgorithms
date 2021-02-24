@@ -1,6 +1,6 @@
 package stackProblems;
 
-public class StackArrayImpl implements Stack {
+public class StackArrayImpl implements Stack<Number> {
 
     private int[] arr;
     private int size;

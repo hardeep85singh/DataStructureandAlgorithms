@@ -1,6 +1,6 @@
 package stackProblems;
 
-public class StackListImpl implements Stack{
+public class StackListImpl implements Stack<Number> {
     private Node head;
     private int length;
 

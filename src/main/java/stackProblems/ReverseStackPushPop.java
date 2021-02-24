@@ -1,7 +1,7 @@
 package stackProblems;
 
 public class ReverseStackPushPop {
-    public void reverseStack(Stack stack){
+    public void reverseStack(Stack<Number> stack){
         if(stack.isEmpty()){
             return;
         }
@@ -10,7 +10,7 @@ public class ReverseStackPushPop {
         insertAtBottom(stack,temp);
     }
 
-    public void insertAtBottom(Stack stack, int data){
+    public void insertAtBottom(Stack<Number> stack, int data){
         if(stack.isEmpty()){
             stack.push(data);
             return;

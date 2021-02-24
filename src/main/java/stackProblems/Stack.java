@@ -1,6 +1,6 @@
 package stackProblems;
 
-public interface Stack {
+public interface Stack<I extends Number> {
     void push(int data);
     int pop();
     int top();
