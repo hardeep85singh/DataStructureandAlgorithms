@@ -121,4 +121,35 @@ public class TreeProblems {
         }
         return root;
     }
+
+    public void insertRecursive(Node root, int data){
+        if(root == null){
+            root = new Node(data);
+        } else {
+            insertElement(root, data);
+        }
+    }
+
+    private void insertElement(Node root, int data){
+        if(root.data >= data){
+            if(root.left == null){
+                root.left = new Node(data);
+            } else{
+                insertElement(root, data);
+            }
+        } else {
+            if(root.right == null){
+                root.right = new Node(data);
+            } else {
+                insertElement(root, data);
+            }
+        }
+    }
+
+    public int size(Node root){
+        
+        int leftCount = root.left == null ? 0 : size(root.left);
+        int rightCount = root.right == null ? 0 : size(root.right);
+        return 1 + leftCount + rightCount;
+    }
 }
