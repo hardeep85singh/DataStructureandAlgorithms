@@ -147,9 +147,46 @@ public class TreeProblems {
     }
 
     public int size(Node root){
-        
-        int leftCount = root.left == null ? 0 : size(root.left);
-        int rightCount = root.right == null ? 0 : size(root.right);
+        int leftCount = 0;
+        int rightCount = 0;
+        if(root.left == null){
+            leftCount = 0;
+        } else {
+            leftCount ++;
+            size(root.left);
+        }
+
+        if(root.right == null){
+            rightCount = 0;
+        } else {
+            rightCount ++;
+            size(root.right);
+        }
+
+
+//        int leftCount = root.left == null ? 0 : size(root.left);
+//        int rightCount = root.right == null ? 0 : size(root.right);
         return 1 + leftCount + rightCount;
     }
+
+    public int sizeLevelOrder(Node root){
+        int count = 0;
+        if(root == null){
+            return 0;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            Node temp = queue.poll();
+            count ++;
+            if(temp.left != null){
+                queue.offer(temp.left);
+            }
+            if(temp.right != null){
+                queue.offer(temp.right);
+            }
+        }
+        return count;
+    }
+
 }
