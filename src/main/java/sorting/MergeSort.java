@@ -1,6 +1,14 @@
 package sorting;
 
+import java.util.Arrays;
+
 public class MergeSort {
+
+    public static void main(String[] args) {
+        int[] arr = {0, -2, 2, 1, 10, -5};
+        mergeSort1(arr, 0, 5);
+        System.out.println(Arrays.toString(arr));
+    }
 
     public static void mergeSort(int[] arr, int left, int right) {
         if (right > left) {
@@ -51,6 +59,60 @@ public class MergeSort {
             k++;
         }
 
+        return arr;
+    }
+
+    public static int[] mergeSort1(int[] arr, int left, int right){
+        if(left < right){
+            int middle = (left + right) / 2;
+            mergeSort1(arr, left, middle);
+            mergeSort1(arr, middle+1, right);
+            merge1(arr, left, middle, right);
+        }
+        return arr;
+    }
+
+    public static int[] merge1(int[] arr, int left, int middle, int right){
+        int l1 = middle - left + 1;
+        int l2 = right - middle;
+
+        int[] arrLeft = new int[l1];
+        int[] arrRight = new int[l2];
+
+        for (int i = 0; i< l1; i++){
+            arrLeft[i] = arr[left + i];
+        }
+
+        for (int i = 0; i< l2; i++){
+            arrRight[i] = arr[middle + i + 1];
+        }
+
+        int i = 0;
+        int j = 0;
+        int k = left;
+
+        while (i < l1 && j < l2){
+            if(arrLeft[i] < arrRight[j]){
+                arr[k] = arrLeft[i];
+                i++;
+            } else {
+                arr[k] = arrRight[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < l1){
+            arr[k] = arrLeft[i];
+            i++;
+            k++;
+        }
+
+        while (j < l2){
+            arr[k] = arrRight[j];
+            j++;
+            k++;
+        }
         return arr;
     }
 }
