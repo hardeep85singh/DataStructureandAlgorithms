@@ -115,4 +115,60 @@ public class MergeSort {
         }
         return arr;
     }
+
+    public static void mergeSort3(int[] arr, int left, int right){
+        if(left < right){
+            int middle = (left + right) /2;
+
+            mergeSort3(arr, left, middle);
+            mergeSort3(arr, middle + 1, right);
+            merge3(arr, left, middle, right);
+        }
+
+    }
+
+    public static int[] merge3(int[] arr, int left, int middle, int right){
+        int n1 = middle - left + 1;
+        int n2 = right - middle;
+
+        int [] arrLeft = new int[n1];
+        int [] arrRight = new int[n2];
+
+        for (int i = 0; i < n1; i++){
+            arrLeft[i] = arr[left + i];
+        }
+
+        for (int i = 0; i < n2; i++){
+            arrRight[i] = arr[middle + 1 + i];
+        }
+
+        int i = 0;
+        int j = 0;
+        int k = left;
+
+        while (i < n1 && j < n2 ){
+            if(arrLeft[i] < arrRight[j]){
+                arr[k] = arrLeft[i];
+                i++;
+            } else {
+                arr[k] = arrRight[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < n1){
+            arr[k] = arrLeft[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2){
+            arr[k] = arrRight[j];
+            j++;
+            k++;
+        }
+        return arr;
+    }
 }
