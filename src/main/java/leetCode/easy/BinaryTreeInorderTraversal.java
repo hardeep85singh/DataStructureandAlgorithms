@@ -25,9 +25,10 @@ public class BinaryTreeInorderTraversal {
             this.right = right;
         }
     }
+    public static List<Integer> result = new LinkedList<>();
 
     public static List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
+
 
         if(root != null){
             inorderTraversal(root.left);
@@ -48,7 +49,7 @@ public class BinaryTreeInorderTraversal {
         node.right.left = new TreeNode(60);
         node.right.right = new TreeNode(70);
 
-     System.out.println(inorderTraversal(node));
+        System.out.println(inorderTraversal(node));
 
     }
 
